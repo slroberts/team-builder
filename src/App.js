@@ -1,14 +1,15 @@
 import React, {useState} from "react";
 import TeamMemberForm from "./components/TeamMemberForm";
 import TeamMembers from "./components/TeamMembers";
+import {Container, AppBar, Box} from "@material-ui/core";
 
 function App() {
   const [teamMembers, setTeamMembers] = useState([
     {
       id: 1,
-      name: "",
-      email: "",
-      role: "",
+      name: "Shomari Roberts",
+      email: "shomariroberts@gmail.com",
+      role: "Frontend Engineer",
     },
   ]);
 
@@ -24,10 +25,17 @@ function App() {
   };
 
   return (
-    <div>
-      <TeamMemberForm addTeamMember={addTeamMember} />
-      <TeamMembers teamMembers={teamMembers} />
-    </div>
+    <>
+      <AppBar position="static" style={{backgroundColor: "#181818"}}>
+        <Box textAlign="center">
+          <h1>Teamdex</h1>
+        </Box>
+      </AppBar>
+      <Container maxWidth="sm">
+        <TeamMemberForm addTeamMember={addTeamMember} />
+        <TeamMembers teamMembers={teamMembers} />
+      </Container>
+    </>
   );
 }
 
