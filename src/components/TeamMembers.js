@@ -35,7 +35,11 @@ const TeamMembers = (props) => {
                 </Box>
               </CardContent>
               <CardActions>
-                <Button size="small" color="primary">
+                <Button
+                  size="small"
+                  color="primary"
+                  onClick={props.editTeamMember}
+                >
                   <EditIcon />
                 </Button>
               </CardActions>

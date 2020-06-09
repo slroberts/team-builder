@@ -13,6 +13,14 @@ function App() {
     },
   ]);
 
+  const [memberToEdit, setMemberToEdit] = useState([
+    {
+      name: "",
+      email: "",
+      role: "",
+    },
+  ]);
+
   const addTeamMember = (teamMember) => {
     const newTeamMember = {
       id: Date.now(),
@@ -24,6 +32,19 @@ function App() {
     setTeamMembers([...teamMembers, newTeamMember]);
   };
 
+  const editTeamMember = (event) => {
+    console.log("Edit this team member");
+    setMemberToEdit([
+      {
+        name: event.target.value,
+        email: event.target.value,
+        role: event.target.value,
+      },
+    ]);
+
+    // setTeamMembers(memberToEdit);
+  };
+
   return (
     <>
       <AppBar position="static" style={{backgroundColor: "#181818"}}>
@@ -32,8 +53,14 @@ function App() {
         </Box>
       </AppBar>
       <Container maxWidth="sm">
-        <TeamMemberForm addTeamMember={addTeamMember} />
-        <TeamMembers teamMembers={teamMembers} />
+        <TeamMemberForm
+          addTeamMember={addTeamMember}
+          memberToEdit={memberToEdit}
+        />
+        <TeamMembers
+          teamMembers={teamMembers}
+          editTeamMember={editTeamMember}
+        />
       </Container>
     </>
   );
